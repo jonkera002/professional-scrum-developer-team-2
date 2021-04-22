@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+}
+
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    text-align: center;
+    color: #545556;
+    background-color: #eeeeee;
+    display: flex;
+    min-height: calc(100vh - 50px);
+    height:100%;
+    flex-direction: column;
+    padding-top: 50px;
+}
+
+button {
+    width: 45px;
+    height: 35px;
+    margin-left: 20px;
+    background-color: #6ddde6;
+    border: none;
+    border-radius: 7px;
+    color: #424b55;
+    outline: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.title-on-page {
+    margin-bottom: 70px;
+}
+
+.start-buttons {
+    margin-top: 50px;
+}
+
+.big-button {
+    width: 150px;
+    height: 50px;
+}
+
+.operator-selected {
+    background-color: #40acb5;
+    background-color: #56caba;
+    border: none;
+}
+
+.question {
+    font-size: 30px;
+    maring-bottom: 20px;
+}
+
+.correct-answer{
+    background-color: #61c861;
+}
+.wrong-answer {
+    background-color: #ed8686;
+}
+
+.next-button {
+    margin-top: 30px;
+}
+
+.stop-button {
+    position: absolute;
+    right: 25px;
+    margin-top: -35px;
+}
+
+.end-exam {
+    margin-bottom: 30px;
+}
