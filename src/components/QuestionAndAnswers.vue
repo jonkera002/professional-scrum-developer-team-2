@@ -47,7 +47,7 @@ export default {
           answers.push(this.leftNumber + randomOtherRightNumber)
           break
         case 'subtraction':
-          this.correctAnswer = this.leftNumber + this.rightNumber
+          this.correctAnswer = this.leftNumber - this.rightNumber
           this.operatorChar = '-'
           answers.push(this.leftNumber - this.rightNumber)
           answers.push(randomOtherRightNumber - this.rightNumber)
