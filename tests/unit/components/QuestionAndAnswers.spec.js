@@ -37,7 +37,7 @@ describe('QuestionAndAnswers.vue', () => {
         expect(response).toEqual(expect.arrayContaining([10]));
         expect(response).toEqual(expect.arrayContaining([12]));
       })
-  })
+    })
     describe('for subtraction (-) operator' , () => {
       beforeEach(async () => {
         wrapper.vm.operatorValue = 'subtraction'
@@ -62,6 +62,36 @@ describe('QuestionAndAnswers.vue', () => {
         expect(response).toEqual(expect.arrayContaining([0]));
         expect(response).toEqual(expect.arrayContaining([-2]));
         expect(response).toEqual(expect.arrayContaining([2]));
+      })
+    })
+    describe('for multiply (*) operator' , () => {
+      beforeEach(async () => {
+        wrapper.vm.operatorValue = 'multiply'
+        jest.spyOn(wrapper.vm, 'generateRandomNumber')
+          .mockReturnValueOnce(3)
+          .mockReturnValueOnce(4)
+        await wrapper.vm.$forceUpdate()
+      })
+      it('should set correctAnswer',  () => {
+        wrapper.vm.correctAnswer = 10
+        wrapper.vm.createAnswers()
+
+        expect(wrapper.vm.correctAnswer).toEqual(25)
+      })
+      it('should set operatorChar to *', () => {
+        wrapper.vm.operatorChar = ''
+        wrapper.vm.createAnswers()
+
+        expect(wrapper.vm.operatorChar).toEqual('*')
+      })
+      it('should return a list of three answers, which includes correct and incorrect answer', () => {
+        wrapper.vm.leftNumber = 5;
+        wrapper.vm.rightNumber = 6;
+        let response = wrapper.vm.createAnswers()
+        expect(response.length).toEqual(3)
+        expect(response).toEqual(expect.arrayContaining([30]));
+        expect(response).toEqual(expect.arrayContaining([15]));
+        expect(response).toEqual(expect.arrayContaining([24]));
       })
     })
   })

@@ -4,6 +4,7 @@
     <div>
       <button ref="addition" @click="selectOperator('addition')" data-testid="operator-button">+</button>
       <button ref="subtraction" @click="selectOperator('subtraction')" data-testid="operator-button">-</button>
+      <button ref="multiply" @click="selectOperator('multiply')" data-testid="operator-button">*</button>
     </div>
 
     <div class="start-buttons">

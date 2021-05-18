@@ -53,6 +53,14 @@ export default {
           answers.push(randomOtherRightNumber - this.rightNumber)
           answers.push(this.leftNumber - randomOtherLeftNumber)
           break
+        case 'multiply':
+          this.correctAnswer = this.leftNumber * this.rightNumber
+          this.operatorChar = '*'
+          answers.push(this.leftNumber * this.rightNumber)
+          answers.push(randomOtherRightNumber * this.rightNumber)
+          answers.push(this.leftNumber * randomOtherLeftNumber)
+          console.log(this.leftNumber, this.rightNumber, randomOtherLeftNumber, randomOtherRightNumber)
+          break
       }
       answers.sort(() => Math.random() - 0.5)
       return answers
