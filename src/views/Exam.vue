@@ -16,7 +16,8 @@
         {{ answer.question}} = {{ answer.correctAnswer }}, Answered: {{ answer.answer }}, Is correct: {{ answer.correctAnswer === answer.answer }}
       </div>
       <h2>Nice job!!</h2>
-      <img src="../../public/dancing.gif">
+      <img v-if="2 * correctAnswers < questionNumber -1" src="../../public/unhappy.gif">
+      <img v-if="2 * correctAnswers >= questionNumber -1" src="../../public/dancing.gif">
       <div>
         <button class="big-button" @click="$emit('endQuiz')">End Exam</button>
       </div>
