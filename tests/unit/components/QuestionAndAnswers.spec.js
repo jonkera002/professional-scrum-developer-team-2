@@ -33,7 +33,7 @@ describe('QuestionAndAnswers.vue', () => {
       })
       it('should return a list of three answers, which includes correct and incorrect answer', () => {
         const response = wrapper.vm.createAnswers()
-        expect(response.length).toEqual(3)
+        expect(response.length).toEqual(4)
         expect(response).toEqual(expect.arrayContaining([10]))
         expect(response).toEqual(expect.arrayContaining([12]))
       })
@@ -58,7 +58,7 @@ describe('QuestionAndAnswers.vue', () => {
       })
       it('should return a list of three answers, which includes correct and incorrect answer', () => {
         const response = wrapper.vm.createAnswers()
-        expect(response.length).toEqual(3)
+        expect(response.length).toEqual(4)
         expect(response).toEqual(expect.arrayContaining([0]))
         expect(response).toEqual(expect.arrayContaining([-2]))
         expect(response).toEqual(expect.arrayContaining([2]))
@@ -88,7 +88,7 @@ describe('QuestionAndAnswers.vue', () => {
         wrapper.vm.leftNumber = 5
         wrapper.vm.rightNumber = 6
         const response = wrapper.vm.createAnswers()
-        expect(response.length).toEqual(3)
+        expect(response.length).toEqual(4)
         expect(response).toEqual(expect.arrayContaining([30]))
         expect(response).toEqual(expect.arrayContaining([15]))
         expect(response).toEqual(expect.arrayContaining([24]))

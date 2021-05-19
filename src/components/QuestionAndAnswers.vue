@@ -50,7 +50,8 @@ export default {
           answers.push(this.correctAnswer)
           answers.push(randomOtherLeftNumber + this.rightNumber)
           answers.push(this.leftNumber + randomOtherRightNumber)
-          // answers.push(randomOtherLeftNumber + randomOtherRightNumber)
+          answers.push(randomOtherLeftNumber + this.leftNumber)
+          // answers.push(this.rightNumber + randomOtherRightNumber)
           break
         case 'subtraction':
           this.correctAnswer = this.leftNumber - this.rightNumber
@@ -58,7 +59,8 @@ export default {
           answers.push(this.leftNumber - this.rightNumber)
           answers.push(randomOtherRightNumber - this.rightNumber)
           answers.push(this.leftNumber - randomOtherLeftNumber)
-          // answers.push(randomOtherRightNumber - randomOtherLeftNumber)
+          answers.push(randomOtherLeftNumber - this.leftNumber)
+          // answers.push(this.rightNumber - randomOtherRightNumber)
           break
         case 'multiply':
           this.correctAnswer = this.leftNumber * this.rightNumber
@@ -66,7 +68,8 @@ export default {
           answers.push(this.leftNumber * this.rightNumber)
           answers.push(randomOtherRightNumber * this.rightNumber)
           answers.push(this.leftNumber * randomOtherLeftNumber)
-          // answers.push(randomOtherRightNumber * randomOtherLeftNumber)
+          answers.push(randomOtherLeftNumber * this.leftNumber)
+          // answers.push(this.rightNumber * randomOtherRightNumber)
           break
       }
       answers.sort(() => Math.random() - 0.5)
