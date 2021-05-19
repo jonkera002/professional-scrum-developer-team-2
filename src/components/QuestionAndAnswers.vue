@@ -1,14 +1,12 @@
 <template>
   <div>
-    <h1 class="question">{{leftNumber}}  {{operatorChar}}  {{rightNumber}}</h1>
+    <h1 class="question">{{question}}</h1>
 
     <div>
-      <button class="answer-button" @click="selectAnswer($event, answersList[0])">{{answersList[0]}}</button>
-      <button class="answer-button" @click="selectAnswer($event, answersList[1])">{{answersList[1]}}</button>
-      <button class="answer-button" @click="selectAnswer($event, answersList[2])">{{answersList[2]}}</button>
+      <button v-for="(answer, index) in answersList" :key="index" class="answer-button" @click="selectAnswer($event, answer)">{{answer}}</button>
     </div>
 
-    <button class="big-button next-button" v-if="answerSelected" @click="$emit('nextQuestion')">Next</button>
+    <button class="big-button next-button" v-if="answerSelected" @click="nextQuestion">Next</button>
   </div>
 </template>
 
@@ -22,6 +20,7 @@ export default {
     return {
       leftNumber: this.generateRandomNumber(),
       rightNumber: this.generateRandomNumber(),
+      correctAnswer: 0,
       operatorValue: this.operatorList[Math.floor(Math.random() * this.operatorList.length)],
       operatorChar: '',
       answersList: [],
@@ -31,6 +30,11 @@ export default {
   },
   created () {
     this.answersList = this.createAnswers()
+  },
+  computed: {
+    question: function () {
+      return `${this.leftNumber}  ${this.operatorChar}  ${this.rightNumber}`
+    }
   },
   methods: {
     createAnswers () {
@@ -45,6 +49,7 @@ export default {
           answers.push(this.correctAnswer)
           answers.push(randomOtherLeftNumber + this.rightNumber)
           answers.push(this.leftNumber + randomOtherRightNumber)
+          // answers.push(randomOtherLeftNumber + randomOtherRightNumber)
           break
         case 'subtraction':
           this.correctAnswer = this.leftNumber - this.rightNumber
@@ -52,6 +57,7 @@ export default {
           answers.push(this.leftNumber - this.rightNumber)
           answers.push(randomOtherRightNumber - this.rightNumber)
           answers.push(this.leftNumber - randomOtherLeftNumber)
+          // answers.push(randomOtherRightNumber - randomOtherLeftNumber)
           break
         case 'multiply':
           this.correctAnswer = this.leftNumber * this.rightNumber
@@ -59,6 +65,7 @@ export default {
           answers.push(this.leftNumber * this.rightNumber)
           answers.push(randomOtherRightNumber * this.rightNumber)
           answers.push(this.leftNumber * randomOtherLeftNumber)
+          // answers.push(randomOtherRightNumber * randomOtherLeftNumber)
           break
       }
       answers.sort(() => Math.random() - 0.5)
@@ -66,6 +73,7 @@ export default {
     },
     selectAnswer ($event, answer) {
       if (!this.answerSelected) {
+        this.answer = answer
         this.answerSelected = true
         if (answer === this.correctAnswer) {
           $event.target.classList.add('correct-answer')
@@ -78,6 +86,9 @@ export default {
     },
     generateRandomNumber () {
       return Math.ceil(Math.random() * 10) * (Math.round(Math.random()) ? 1 : -1)
+    },
+    nextQuestion () {
+      this.$emit('nextQuestion', this.question, this.correctAnswer, this.answer, this.answeredCorrectly)
     }
   }
 }

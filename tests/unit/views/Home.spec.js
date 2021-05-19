@@ -3,7 +3,7 @@ import Home from '@/views/Home.vue'
 
 describe('Home.vue', () => {
   let wrapper
-  beforeEach( () => {
+  beforeEach(() => {
     const operatorList = []
 
     wrapper = shallowMount(Home, {
@@ -14,7 +14,7 @@ describe('Home.vue', () => {
     const classList = {
       add: jest.fn(),
       remove: jest.fn()
-    };
+    }
 
     beforeEach(() => {
       wrapper.vm.$refs = {
