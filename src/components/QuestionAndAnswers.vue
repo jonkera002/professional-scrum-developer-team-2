@@ -6,7 +6,7 @@
       <button v-for="(answer, index) in answersList" :key="index" class="answer-button" @click="selectAnswer($event, answer)">{{answer}}</button>
     </div>
 
-    <button class="big-button next-button" v-if="answerSelected" @click="nextQuestion">Next</button>
+    <button class="big-button next-button" v-if="answerSelected" @click="$emit('nextQuestion', question, correctAnswer, answer)">Next</button>
   </div>
 </template>
 
@@ -24,6 +24,7 @@ export default {
       operatorValue: this.operatorList[Math.floor(Math.random() * this.operatorList.length)],
       operatorChar: '',
       answersList: [],
+      answer: 0,
       answerSelected: false,
       answeredCorrectly: false
     }
@@ -86,9 +87,6 @@ export default {
     },
     generateRandomNumber () {
       return Math.ceil(Math.random() * 10) * (Math.round(Math.random()) ? 1 : -1)
-    },
-    nextQuestion () {
-      this.$emit('nextQuestion', this.question, this.correctAnswer, this.answer, this.answeredCorrectly)
     }
   }
 }

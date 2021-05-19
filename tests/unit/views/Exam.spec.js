@@ -25,5 +25,15 @@ describe('Exam.vue', () => {
       wrapper.vm.nextQuestion()
       expect(wrapper.vm.examInProgress).toEqual(false)
     })
+    it('should increase the value of questionNumber with 1', () => {
+      wrapper.vm.questionNumber = 1
+      wrapper.vm.nextQuestion('a', 2, 2)
+      expect(wrapper.vm.questionNumber).toEqual(2)
+      wrapper.vm.nextQuestion('a', 3, 2)
+      expect(wrapper.vm.questionNumber).toEqual(3)
+      wrapper.vm.nextQuestion('a', 4, 4)
+      expect(wrapper.vm.questionNumber).toEqual(4)
+      expect(wrapper.vm.correctAnswers).toEqual(2)
+    })
   })
 })

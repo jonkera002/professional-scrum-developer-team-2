@@ -10,10 +10,10 @@
     </div>
     <div v-else>
       <h1 class="title-on-page">You have reached the end of the Exam</h1>
-      <h2>The success score is: {{ correctAnswer }} / {{ questionNumber -1 }} = {{ 100 * correctAnswer / (questionNumber -1) }}%</h2>
+      <h2>The success score is: {{ correctAnswers }} / {{ questionNumber -1 }} = {{ 100 * correctAnswers / (questionNumber -1) }}%</h2>
 
       <div v-for="(answer, index) in answers" :key="index">
-        {{ answer.question}} = {{ answer.correctAnswer }}, Answered: {{ answer.answer }}, Is correct: {{ answer.isCorrect }}
+        {{ answer.question}} = {{ answer.correctAnswer }}, Answered: {{ answer.answer }}, Is correct: {{ answer.correctAnswer === answer.answer }}
       </div>
       <h2>Nice job!!</h2>
       <div>
@@ -36,18 +36,18 @@ export default {
   data () {
     return {
       questionNumber: 1,
-      correctAnswer: 0,
+      correctAnswers: 0,
       answers: [],
       examInProgress: true
     }
   },
   methods: {
-    nextQuestion (question, correctAnswer, answer, isCorrect) {
+    nextQuestion (question, correctAnswer, answer) {
       this.questionNumber++
-      if (isCorrect) {
-        this.correctAnswer++
+      if (correctAnswer === answer) {
+        this.correctAnswers++
       }
-      this.answers.push({ question, correctAnswer, answer, isCorrect })
+      this.answers.push({ question, correctAnswer, answer })
       this.examInProgress = this.questionNumber <= 5
     }
   }
