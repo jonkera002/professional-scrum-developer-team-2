@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test-ut": "vue-cli-service test:unit --coverage",
-    "test-ft": "testcafe chrome tests/testcafe/*.test.js --app \"npm run serve\" \"chrome\" --app-init-delay 35000",
+    "test-ft": "testcafe chrome tests/testcafe/*.test.js --app \"npm run serve\" --app-init-delay 35000 --hostname localhost",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
