@@ -16,7 +16,7 @@ test('should show the question and three answers', async t => {
     .click(Selector('#app').find('[data-testid="operator-button"]').nth(0))
     .click(Selector('[data-testid="practice-button"]'))
     .expect(Selector('.question').visible).ok()
-    .expect(Selector('#exam').find('.answer-button').count).eql(3)
+    .expect(Selector('#practice').find('.answer-button').count).eql(4)
 })
 
 test('should show the next button on selecting on of the answers', async t => {
@@ -36,9 +36,9 @@ test('should move to the next question when clicking on next', async t => {
     .expect(Selector('.question').visible).ok()
     .click(Selector('#practice').find('.answer-button').nth(0))
     .click(Selector('.next-button'))
-    .expect(Selector('.title-on-page').innerText).eql('Pratice Question #2')
+    .expect(Selector('.title-on-page').innerText).eql('Practice Question #2')
     .expect(Selector('.question').visible).ok()
-    .expect(Selector('#practice').find('.answer-button').count).eql(3)
+    .expect(Selector('#practice').find('.answer-button').count).eql(4)
 })
 
 test('should stop the practice session when clicking on the stop button', async t => {
@@ -47,5 +47,5 @@ test('should stop the practice session when clicking on the stop button', async 
     .click(Selector('[data-testid="practice-button"]'))
     .expect(Selector('.title-on-page').visible).ok()
     .click(Selector('.stop-button'))
-    .expect(Selector('.title-on-page').visible).notOk()
+    .expect(Selector('.title-on-page').innerText).eql('Which operators would you like to use?')
 })

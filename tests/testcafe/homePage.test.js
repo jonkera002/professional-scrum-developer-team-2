@@ -3,9 +3,9 @@ import { Selector } from 'testcafe'
 fixture('Home Page')
   .page('http://localhost:8080')
 
-test('should show the two selector options', async t => {
+test('should show the three selector options', async t => {
   await t
-    .expect(Selector('#app').find('[data-testid="operator-button"').count).eql(2)
+    .expect(Selector('#app').find('[data-testid="operator-button"').count).eql(3)
 })
 
 test('should show the practice and the exam button when on or multiple operators are selected', async t => {
