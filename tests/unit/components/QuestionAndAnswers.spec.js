@@ -125,6 +125,14 @@ describe('QuestionAndAnswers.vue', () => {
       expect(wrapper.vm.answeredCorrectly).toEqual(false)
       expect(event.target.classList.add).toHaveBeenCalledWith('wrong-answer')
     })
+    it('should not change answeredCorrectly when question is already answered', () => {
+      wrapper.vm.answerSelected = true
+      wrapper.vm.answeredCorrectly = false
+      wrapper.vm.correctAnswer = 1
+      wrapper.vm.selectAnswer(event, 1)
+      expect(wrapper.vm.answeredCorrectly).toEqual(false)
+      expect(event.target.classList.add).toHaveBeenCalledWith('wrong-answer')
+    })
   })
   describe('generateRandomNumber method', () => {
     it('should return a random number without decimals', () => {

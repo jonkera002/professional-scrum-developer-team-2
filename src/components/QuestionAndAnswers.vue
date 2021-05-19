@@ -65,13 +65,15 @@ export default {
       return answers
     },
     selectAnswer ($event, answer) {
-      this.answerSelected = true
-      if (answer === this.correctAnswer) {
-        $event.target.classList.add('correct-answer')
-        this.answeredCorrectly = true
-      } else {
-        $event.target.classList.add('wrong-answer')
-        this.answeredCorrectly = false
+      if (!this.answerSelected) {
+        this.answerSelected = true
+        if (answer === this.correctAnswer) {
+          $event.target.classList.add('correct-answer')
+          this.answeredCorrectly = true
+        } else {
+          $event.target.classList.add('wrong-answer')
+          this.answeredCorrectly = false
+        }
       }
     },
     generateRandomNumber () {
