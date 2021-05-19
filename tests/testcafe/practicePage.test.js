@@ -11,7 +11,7 @@ test('should show the title containing the question number and the stop button',
     .expect(Selector('.stop-button').visible).ok()
 })
 
-test('should show the question and three answers', async t => {
+test('should show the question and four answers', async t => {
   await t
     .click(Selector('#app').find('[data-testid="operator-button"]').nth(0))
     .click(Selector('[data-testid="practice-button"]'))
@@ -19,7 +19,7 @@ test('should show the question and three answers', async t => {
     .expect(Selector('#practice').find('.answer-button').count).eql(4)
 })
 
-test('should show the next button on selecting on of the answers', async t => {
+test('should show the next button on selecting one of the answers', async t => {
   await t
     .click(Selector('#app').find('[data-testid="operator-button"]').nth(0))
     .click(Selector('[data-testid="practice-button"]'))
