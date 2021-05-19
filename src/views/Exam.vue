@@ -16,6 +16,7 @@
         {{ answer.question}} = {{ answer.correctAnswer }}, Answered: {{ answer.answer }}, Is correct: {{ answer.correctAnswer === answer.answer }}
       </div>
       <h2>Nice job!!</h2>
+      <img src="../../public/dancing.gif">
       <div>
         <button class="big-button" @click="$emit('endQuiz')">End Exam</button>
       </div>

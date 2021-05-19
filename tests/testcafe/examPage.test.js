@@ -39,3 +39,24 @@ test('should move to the next question when clicking on next', async t => {
     .expect(Selector('.question').visible).ok()
     .expect(Selector('#exam').find('.answer-button').count).eql(4)
 })
+
+test('should show an h1, h2 and image', async t => {
+  await t
+    .click(Selector('#app').find('[data-testid="operator-button"]').nth(0))
+    .click(Selector('[data-testid="exam-button"]'))
+    .expect(Selector('.question').visible).ok()
+    .click(Selector('#exam').find('.answer-button').nth(0))
+    .click(Selector('.next-button'))
+    .click(Selector('#exam').find('.answer-button').nth(0))
+    .click(Selector('.next-button'))
+    .click(Selector('#exam').find('.answer-button').nth(0))
+    .click(Selector('.next-button'))
+    .click(Selector('#exam').find('.answer-button').nth(0))
+    .click(Selector('.next-button'))
+    .click(Selector('#exam').find('.answer-button').nth(0))
+    .click(Selector('.next-button'))
+
+    .expect(Selector('.title-on-page').innerText).eql('You have reached the end of the Exam')
+    .expect(Selector('h2').visible).ok()
+    .expect(Selector('img').visible).ok()
+})
